@@ -65,4 +65,19 @@ public class TopViewTests
         Assert.AreEqual(topViewExpected.Length, topViewActual.Length);
         for (var i = 0; i < topViewExpected.Length; i++) Assert.AreEqual(topViewExpected[i], topViewActual[i]);
     }
+
+    [Test]
+    public void TestTopViewPrefersShallowerNodeAndIsOrderedLeftToRight()
+    {
+        var binaryTree =
+            new BinaryTree<int>(1,
+                new BinaryTree<int>(2, null,
+                    new BinaryTree<int>(4, null,
+                        new BinaryTree<int>(5, null,
+                            new BinaryTree<int>(6, null, null)))),
+                new BinaryTree<int>(3, null,
+                    new BinaryTree<int>(7, null, null)));
+
+        CollectionAssert.AreEqual(new[] { 2, 1, 3, 7 }, binaryTree.TopView());
+    }
 }

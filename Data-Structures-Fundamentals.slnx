@@ -1,0 +1,52 @@
+<Solution>
+  <Folder Name="/001-Linear-Data-Structures/">
+    <Project Path="001-Linear-Data-Structures/List/List.csproj" />
+    <Project Path="001-Linear-Data-Structures/ListTests/ListTests.csproj" />
+    <Project Path="001-Linear-Data-Structures/Queue/Queue.csproj" />
+    <Project Path="001-Linear-Data-Structures/QueueTests/QueueTests.csproj" />
+    <Project Path="001-Linear-Data-Structures/SinglyLinkedList/SinglyLinkedList.csproj" />
+    <Project Path="001-Linear-Data-Structures/SinglyLinkedListTest/SinglyLinkedListTest.csproj" />
+    <Project Path="001-Linear-Data-Structures/Stack/Stack.csproj" />
+    <Project Path="001-Linear-Data-Structures/StackTests/StackTests.csproj" />
+  </Folder>
+  <Folder Name="/002-Exercise-Linear-Data-Structures/">
+    <Project Path="002-Exercise-Linear-Data-Structures/BalancedParentheses/BalancedParentheses.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/BalancedParenthesesTests/BalancedParenthesesTests.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/DoublyLinkedList/DoublyLinkedList.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/DoublyLinkedListTest/DoublyLinkedListTest.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/FasterQueue/FasterQueue.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/FasterQueueTests/FasterQueueTests.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/ReversedList/ReversedList.csproj" />
+    <Project Path="002-Exercise-Linear-Data-Structures/ReversedListTests/ReversedListTests.csproj" />
+  </Folder>
+  <Folder Name="/003-Trees-Representation-And-Traversal-Bfs-Dfs/">
+    <Project Path="003-Trees-Representation-And-Traversal-Bfs-Dfs/Tree/Tree.csproj" />
+    <Project Path="003-Trees-Representation-And-Traversal-Bfs-Dfs/TreeTests/TreeTests.csproj" />
+  </Folder>
+  <Folder Name="/004-Exercise-Trees-Representation-And-Traversal-Bfs-Dfs/">
+    <Project Path="004-Exercise-Trees-Representation-And-Traversal-Bfs-Dfs/Tree/Tree.csproj" />
+    <Project Path="004-Exercise-Trees-Representation-And-Traversal-Bfs-Dfs/TreeTests/TreeTests.csproj" />
+  </Folder>
+  <Folder Name="/005-Heaps-Bst/">
+    <Project Path="005-Heaps-Bst/BinarySearchTree/BinarySearchTree.csproj" />
+    <Project Path="005-Heaps-Bst/BinarySearchTreeTests/BinarySearchTreeTests.csproj" />
+    <Project Path="005-Heaps-Bst/BinaryTree/BinaryTree.csproj" />
+    <Project Path="005-Heaps-Bst/BinaryTreeTests/BinaryTreeTests.csproj" />
+    <Project Path="005-Heaps-Bst/MaxHeap/MaxHeap.csproj" />
+    <Project Path="005-Heaps-Bst/MaxHeapTests/MaxHeapTests.csproj" />
+    <Project Path="005-Heaps-Bst/PriorityQueue/PriorityQueue.csproj" />
+    <Project Path="005-Heaps-Bst/PriorityQueueTests/PriorityQueueTests.csproj" />
+  </Folder>
+  <Folder Name="/006-Exercise-Heaps-Bst/">
+    <Project Path="006-Exercise-Heaps-Bst/BinarySearchTree/BinarySearchTree.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/BinarySearchTreeTests/BinarySearchTreeTests.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/CookiesProblem/CookiesProblem.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/CookiesProblemTests/CookiesProblemTests.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/LowestCommonAncestor/LowestCommonAncestor.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/LowestCommonAncestorTests/LowestCommonAncestorTests.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/MinHeap/MinHeap.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/MinHeapTests/MinHeapTests.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/TopView/TopView.csproj" />
+    <Project Path="006-Exercise-Heaps-Bst/TopViewTests/TopViewTests.csproj" />
+  </Folder>
+</Solution>

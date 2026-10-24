@@ -6,11 +6,11 @@ public class ListTests
     [SetUp]
     public void InitializeList()
     {
-        myList = new List<int>();
+        myList = new List.List<int>();
     }
 
     private readonly Random _random = new();
-    private List<int> myList;
+    private List.List<int> myList;
 
     [Test]
     public void AddShouldWorkCorrectly()
@@ -259,5 +259,56 @@ public class ListTests
             Assert.Throws<IndexOutOfRangeException>(() => { myList.Insert(-(1 + i), _random.Next(1, 5)); });
             Assert.Throws<IndexOutOfRangeException>(() => { myList.Insert(count + i, _random.Next(1, 5)); });
         }
+    }
+
+    [Test]
+    public void RemoveAtShouldKeepElementsBeforeTheIndex()
+    {
+        for (var i = 1; i <= 5; i++)
+            myList.Add(i);
+
+        myList.RemoveAt(2);
+
+        CollectionAssert.AreEqual(new[] { 1, 2, 4, 5 }, myList);
+    }
+
+    [Test]
+    public void RemoveShouldWorkWhenTheInternalArrayIsFull()
+    {
+        for (var i = 1; i <= 4; i++)
+            myList.Add(i);
+
+        Assert.True(myList.Remove(2));
+        CollectionAssert.AreEqual(new[] { 1, 3, 4 }, myList);
+    }
+
+    [Test]
+    public void AddShouldWorkWithZeroInitialCapacity()
+    {
+        var list = new List.List<int>(0);
+
+        list.Add(42);
+
+        Assert.AreEqual(42, list[0]);
+    }
+
+    [Test]
+    public void IndexOfShouldReturnTheFirstOccurrence()
+    {
+        myList.Add(7);
+        myList.Add(7);
+
+        Assert.AreEqual(0, myList.IndexOf(7));
+    }
+
+    [Test]
+    public void ContainsShouldHandleNullItems()
+    {
+        var list = new List.List<string>();
+        list.Add(null);
+        list.Add("a");
+
+        Assert.True(list.Contains("a"));
+        Assert.True(list.Contains(null));
     }
 }

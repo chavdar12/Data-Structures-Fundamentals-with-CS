@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\LowestCommonAncestor\LowestCommonAncestor.csproj" />
+  </ItemGroup>
+
+</Project>

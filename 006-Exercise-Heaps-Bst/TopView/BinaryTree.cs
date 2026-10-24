@@ -22,7 +22,7 @@ public class BinaryTree<T> : IAbstractBinaryTree<T>
 
         TopView(this, 0, 0, dict);
 
-        return dict.Values.Select(n => n.nodeValue).ToList();
+        return dict.OrderBy(kv => kv.Key).Select(kv => kv.Value.nodeValue).ToList();
     }
 
     private void TopView(BinaryTree<T> node, int distance, int level,
@@ -30,8 +30,8 @@ public class BinaryTree<T> : IAbstractBinaryTree<T>
     {
         if (node == null) return;
 
-
-        if (!dict.ContainsKey(distance)) dict.Add(distance, (node.Value, level));
+        if (!dict.TryGetValue(distance, out var existing) || level < existing.nodeLevel)
+            dict[distance] = (node.Value, level);
 
         TopView(node.LeftChild, distance - 1, level + 1, dict);
         TopView(node.RightChild, distance + 1, level + 1, dict);

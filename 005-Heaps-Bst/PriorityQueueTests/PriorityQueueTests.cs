@@ -23,4 +23,27 @@ public class PriorityQueueTests
         Assert.That(queue.Size, Is.EqualTo(expected.Length));
         while (queue.Size != 0) Assert.That(queue.Dequeue(), Is.EqualTo(expected[index++]));
     }
+
+    [Test]
+    public void TestDequeueReturnsElementsInDescendingOrder()
+    {
+        for (var seed = 0; seed < 50; seed++)
+        {
+            var random = new Random(seed);
+            var queue = new PriorityQueue<int>();
+            var elements = Enumerable.Range(0, 30).Select(_ => random.Next(100)).ToList();
+            foreach (var element in elements) queue.Add(element);
+
+            var actual = new List<int>();
+            while (queue.Size != 0) actual.Add(queue.Dequeue());
+
+            Assert.That(actual, Is.EqualTo(elements.OrderByDescending(e => e)), $"seed {seed}");
+        }
+    }
+
+    [Test]
+    public void TestDequeueEmptyThrows()
+    {
+        Assert.Throws<InvalidOperationException>(() => new PriorityQueue<int>().Dequeue());
+    }
 }

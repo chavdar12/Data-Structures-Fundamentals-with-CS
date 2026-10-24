@@ -14,7 +14,7 @@ public class SlowQueue<T> : IAbstractQueue<T>
 
         while (current != null)
         {
-            if (current.Item.Equals(item)) return true;
+            if (EqualityComparer<T>.Default.Equals(current.Item, item)) return true;
 
             current = current.Next;
         }

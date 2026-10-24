@@ -72,7 +72,7 @@ public class BinarySearchTree<T> : IBinarySearchTree<T> where T : IComparable
 
     public T Ceiling(T element)
     {
-        return Select(Rank(element) + 1);
+        return Select(Contains(element) ? Rank(element) + 1 : Rank(element));
     }
 
     public T Floor(T element)

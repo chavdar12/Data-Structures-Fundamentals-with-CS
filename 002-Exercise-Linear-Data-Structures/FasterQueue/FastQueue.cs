@@ -66,13 +66,11 @@ public class FastQueue<T> : IAbstractQueue<T>
 
     public bool Contains(T item)
     {
-        EnsureNotEmpty();
-
         var current = _head;
 
         while (current != null)
         {
-            if (current.Item.Equals(item)) return true;
+            if (EqualityComparer<T>.Default.Equals(current.Item, item)) return true;
 
             current = current.Next;
         }

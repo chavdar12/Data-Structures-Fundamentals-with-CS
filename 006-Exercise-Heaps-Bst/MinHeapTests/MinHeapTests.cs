@@ -161,4 +161,10 @@ public class MinHeapTests
 
         Assert.Throws<InvalidOperationException>(() => heap.ExtractMin());
     }
+
+    [Test]
+    public void Peek_EmptyHeap_ShouldThrowException()
+    {
+        Assert.Throws<InvalidOperationException>(() => new MinHeap<int>().Peek());
+    }
 }

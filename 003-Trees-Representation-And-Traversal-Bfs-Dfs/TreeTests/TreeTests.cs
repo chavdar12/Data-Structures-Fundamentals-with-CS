@@ -160,4 +160,22 @@ public class TreeTests
         Assert.Throws<ArgumentNullException>(()
             => tree.Swap(19, 77));
     }
+
+    [Test]
+    public void TestRemoveNodeAddedWithAddChildWorksCorrectly()
+    {
+        tree.AddChild(21, new Tree<int>(99));
+        tree.RemoveNode(99);
+
+        CollectionAssert.AreEqual(new[] { 7, 19, 21, 14, 1, 12, 31, 23, 6 }, tree.OrderBfs());
+    }
+
+    [Test]
+    public void TestRemoveNodeAfterRootSwapWorksCorrectly()
+    {
+        tree.Swap(7, 19);
+        tree.RemoveNode(1);
+
+        CollectionAssert.AreEqual(new[] { 19, 12, 31 }, tree.OrderBfs());
+    }
 }

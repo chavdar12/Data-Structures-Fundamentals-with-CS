@@ -116,4 +116,10 @@ public class QueueTests
     {
         return new FastQueue<int>();
     }
+
+    [Test]
+    public void ContainsShouldReturnFalseWhenEmpty()
+    {
+        Assert.That(GetQueue().Contains(1), Is.False);
+    }
 }

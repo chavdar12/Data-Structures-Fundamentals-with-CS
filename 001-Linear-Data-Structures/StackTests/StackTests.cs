@@ -97,4 +97,10 @@ public class StackTests
 
         Assert.That(_stack.Contains(count), Is.False);
     }
+
+    [Test]
+    public void ContainsShouldReturnFalseWhenEmpty()
+    {
+        Assert.That(_stack.Contains(1), Is.False);
+    }
 }

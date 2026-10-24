@@ -34,7 +34,7 @@ public class BalancedParenthesesSolve : ISolvable
             }
 
             if (expectedCharacter != default
-                && openBrackets.Pop() != expectedCharacter)
+                && (openBrackets.Count == 0 || openBrackets.Pop() != expectedCharacter))
                 return false;
         }
 

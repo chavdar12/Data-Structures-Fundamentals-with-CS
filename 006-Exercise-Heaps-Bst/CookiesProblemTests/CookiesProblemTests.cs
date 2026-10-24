@@ -15,4 +15,16 @@ public class CookiesProblemTests
         var result = new CookiesProblem.CookiesProblem().Solve(10, new[] { 1, 1, 1, 1 });
         Assert.AreEqual(-1, result);
     }
+
+    [Test]
+    public void Solve_EmptyInput_HasNoSolution()
+    {
+        Assert.AreEqual(-1, new CookiesProblem.CookiesProblem().Solve(1, new int[0]));
+    }
+
+    [Test]
+    public void Solve_AlreadySweetEnough_NeedsNoOperations()
+    {
+        Assert.AreEqual(0, new CookiesProblem.CookiesProblem().Solve(1, new[] { 5, 6 }));
+    }
 }

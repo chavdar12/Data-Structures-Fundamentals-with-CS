@@ -29,4 +29,10 @@ public class MaxHeapTests
         foreach (var el in elements) integerHeap.Add(el);
         Assert.AreEqual(8, integerHeap.Size);
     }
+
+    [Test]
+    public void TestPeekEmptyThrows()
+    {
+        Assert.Throws<InvalidOperationException>(() => new MaxHeap<int>().Peek());
+    }
 }

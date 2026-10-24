@@ -86,4 +86,17 @@ public class BinarySearchTreeTests
     {
         Assert.IsFalse(_bst.Contains(77));
     }
+
+    [Test]
+    public void TestLeftAndRightChildAreTheRootChildren()
+    {
+        var bst = new BinarySearchTree<int>();
+        bst.Insert(12);
+        bst.Insert(21);
+        bst.Insert(18);
+
+        Assert.IsNull(bst.LeftChild);
+        Assert.AreEqual(21, bst.RightChild.Value);
+        Assert.AreEqual(18, bst.Search(21).LeftChild.Value);
+    }
 }

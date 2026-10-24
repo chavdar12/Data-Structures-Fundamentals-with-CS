@@ -88,7 +88,7 @@ public class Tree<T> : IAbstractTree<T>
         var leafNodes = OrderBfs()
             .Where(node => IsLeaf(node));
 
-        var deepestNodeDepth = 0;
+        var deepestNodeDepth = -1;
         Tree<T> deepestNode = null;
 
         foreach (var node in leafNodes)
@@ -235,7 +235,7 @@ public class Tree<T> : IAbstractTree<T>
             GetPathsWithSumDfs(child, wantedPaths, currentPath, ref currentSum, wantedSum);
         }
 
-        if (currentSum == wantedSum) wantedPaths.Add(new List<T>(currentPath));
+        if (IsLeaf(current) && currentSum == wantedSum) wantedPaths.Add(new List<T>(currentPath));
 
         currentSum -= Convert.ToInt32(current.Key);
         currentPath.RemoveAt(currentPath.Count - 1);

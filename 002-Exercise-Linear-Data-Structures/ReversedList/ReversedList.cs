@@ -31,7 +31,7 @@ public class ReversedList<T> : IAbstractList<T>
         set
         {
             ValidateIndex(index);
-            _items[index] = value;
+            _items[Count - 1 - index] = value;
         }
     }
 
@@ -52,7 +52,7 @@ public class ReversedList<T> : IAbstractList<T>
     public int IndexOf(T item)
     {
         for (var i = 0; i < Count; i++)
-            if (_items[Count - 1 - i].Equals(item))
+            if (EqualityComparer<T>.Default.Equals(_items[Count - 1 - i], item))
                 return i;
 
         return -1;
@@ -115,7 +115,7 @@ public class ReversedList<T> : IAbstractList<T>
 
     private T[] Grow()
     {
-        var newArray = new T[Count * 2];
+        var newArray = new T[Math.Max(DefaultCapacity, Count * 2)];
         Array.Copy(_items, newArray, _items.Length);
         return newArray;
     }

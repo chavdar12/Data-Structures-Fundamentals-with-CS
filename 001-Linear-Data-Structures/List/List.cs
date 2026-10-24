@@ -42,23 +42,16 @@ public class List<T> : IAbstractList<T>
 
     public bool Contains(T item)
     {
-        for (var i = 0; i < Count; i++)
-            if (_items[i].Equals(item))
-                return true;
-
-        return false;
+        return IndexOf(item) != -1;
     }
 
     public int IndexOf(T item)
     {
-        var index = -1;
+        for (var i = 0; i < Count; i++)
+            if (EqualityComparer<T>.Default.Equals(_items[i], item))
+                return i;
 
-        if (Contains(item))
-            for (var i = 0; i < Count; i++)
-                if (_items[i].Equals(item))
-                    index = i;
-
-        return index;
+        return -1;
     }
 
     public void Insert(int index, T item)
@@ -74,25 +67,19 @@ public class List<T> : IAbstractList<T>
 
     public bool Remove(T item)
     {
-        if (Contains(item))
-        {
-            var index = IndexOf(item);
+        var index = IndexOf(item);
 
-            for (var i = index; i < Count; i++) _items[i] = _items[i + 1];
+        if (index == -1) return false;
 
-            _items[Count - 1] = default;
-            Count--;
-            return true;
-        }
-
-        return false;
+        RemoveAt(index);
+        return true;
     }
 
     public void RemoveAt(int index)
     {
         ValidateIndex(index);
 
-        for (var i = 0; i < Count - 1; i++) _items[i] = _items[i + 1];
+        for (var i = index; i < Count - 1; i++) _items[i] = _items[i + 1];
 
         _items[Count - 1] = default;
         Count--;
@@ -120,7 +107,7 @@ public class List<T> : IAbstractList<T>
 
     private T[] Grow()
     {
-        var newArray = new T[Count * 2];
+        var newArray = new T[Math.Max(DEFAULT_CAPACITY, Count * 2)];
         Array.Copy(_items, newArray, _items.Length);
         return newArray;
     }

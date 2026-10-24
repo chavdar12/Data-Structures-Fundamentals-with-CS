@@ -76,14 +76,14 @@ public class ListTests
         var array = new int[count];
 
         for (var i = 0; i < count; i++)
+            list.Add(0);
+
+        for (var i = 0; i < count; i++)
         {
             var randomNumber = _random.Next();
 
-            list.Add(0);
-
-            // We should set it in an array because in an implementation full of bugs the indexer may remove the last added item.
             list[i] = randomNumber;
-            array[^(i + 1)] = randomNumber;
+            array[i] = randomNumber;
         }
 
         for (var i = 0; i < count; i++)
@@ -235,7 +235,7 @@ public class ListTests
             array[^(i + 1)] = i;
         }
 
-        var randomIndex = _random.Next(array.Length) + 1;
+        var randomIndex = _random.Next(array.Length);
         list.Remove(array[randomIndex]);
         Assert.AreEqual(array.Length - 1, list.Count);
 
@@ -293,5 +293,29 @@ public class ListTests
     private static IAbstractList<int> GetList()
     {
         return new ReversedList<int>();
+    }
+
+    [Test]
+    public void IndexerSetterShouldWriteTheSameSlotTheGetterReads()
+    {
+        var list = GetList();
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+
+        list[0] = 30;
+
+        Assert.AreEqual(30, list[0]);
+        CollectionAssert.AreEqual(new[] { 30, 2, 1 }, list);
+    }
+
+    [Test]
+    public void AddShouldWorkWithZeroInitialCapacity()
+    {
+        var list = new ReversedList<int>(0);
+
+        list.Add(42);
+
+        Assert.AreEqual(42, list[0]);
     }
 }

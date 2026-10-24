@@ -22,13 +22,13 @@ public class BinaryTreeTests
     public void TestAsIndentedPreOrder()
     {
         var indentedPreOrder = _tree.AsIndentedPreOrder(0);
-        Assert.AreEqual("17\r\n" +
+        Assert.AreEqual(("17\r\n" +
                         "  9\r\n" +
                         "    3\r\n" +
                         "    11\r\n" +
                         "  25\r\n" +
                         "    20\r\n" +
-                        "    31", indentedPreOrder.TrimEnd());
+                        "    31").ReplaceLineEndings(), indentedPreOrder.TrimEnd());
     }
 
     [Test]

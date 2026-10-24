@@ -6,11 +6,11 @@ public class QueueTests
     [SetUp]
     public void InitializeQueue()
     {
-        _queue = new Queue<int>();
+        _queue = new Queue.Queue<int>();
     }
 
     private readonly Random random = new();
-    private Queue<int> _queue;
+    private Queue.Queue<int> _queue;
 
     [Test]
     public void EnqueueShouldAddElementAtTheTop()
@@ -94,5 +94,11 @@ public class QueueTests
         for (var i = 0; i < count; i++) Assert.That(_queue.Contains(i), Is.True);
 
         Assert.That(_queue.Contains(count), Is.False);
+    }
+
+    [Test]
+    public void ContainsShouldReturnFalseWhenEmpty()
+    {
+        Assert.That(_queue.Contains(1), Is.False);
     }
 }

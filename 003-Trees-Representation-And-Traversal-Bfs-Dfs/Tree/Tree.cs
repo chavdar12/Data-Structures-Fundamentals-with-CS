@@ -68,6 +68,7 @@ public class Tree<T> : IAbstractTree<T>
 
         CheckEmptyNode(searchedNode);
 
+        child.Parent = searchedNode;
         searchedNode._children.Add(child);
     }
 
@@ -111,13 +112,21 @@ public class Tree<T> : IAbstractTree<T>
 
             // replace the old children with the new ones
             _children.Clear();
-            foreach (var child in secondNode.Children) _children.Add(child);
+            foreach (var child in secondNode.Children)
+            {
+                child.Parent = this;
+                _children.Add(child);
+            }
         }
         else if (secondParent == null)
         {
             Value = firstNode.Value;
             _children.Clear();
-            foreach (var child in firstNode.Children) _children.Add(child);
+            foreach (var child in firstNode.Children)
+            {
+                child.Parent = this;
+                _children.Add(child);
+            }
         }
         else
         {
@@ -149,7 +158,7 @@ public class Tree<T> : IAbstractTree<T>
         {
             var subtree = queue.Dequeue();
 
-            if (subtree.Value.Equals(parentKey)) return subtree;
+            if (EqualityComparer<T>.Default.Equals(subtree.Value, parentKey)) return subtree;
 
             foreach (var child in subtree.Children) queue.Enqueue(child);
         }

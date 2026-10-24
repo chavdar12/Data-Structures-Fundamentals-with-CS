@@ -1,33 +1,30 @@
-﻿using Wintellect.PowerCollections;
-
 namespace CookiesProblem;
 
 public class CookiesProblem
 {
     public int Solve(int minSweetness, int[] cookies)
     {
-        var priorityQueue = new OrderedBag<int>();
+        if (cookies == null || cookies.Length == 0) return -1;
 
-        priorityQueue.AddMany(cookies);
+        var priorityQueue = new PriorityQueue<int, int>();
 
-        var currentMinSweetness = priorityQueue.GetFirst();
+        foreach (var cookie in cookies) priorityQueue.Enqueue(cookie, cookie);
 
         var counter = 0;
 
-        while (currentMinSweetness < minSweetness && priorityQueue.Count > 1)
+        while (priorityQueue.Peek() < minSweetness && priorityQueue.Count > 1)
         {
-            var leastSweetCookie = priorityQueue.RemoveFirst();
+            var leastSweetCookie = priorityQueue.Dequeue();
 
-            var secondCookie = priorityQueue.RemoveFirst();
+            var secondCookie = priorityQueue.Dequeue();
 
             var newCookie = leastSweetCookie + 2 * secondCookie;
 
-            priorityQueue.Add(newCookie);
-            currentMinSweetness = priorityQueue.GetFirst();
+            priorityQueue.Enqueue(newCookie, newCookie);
 
             counter++;
         }
 
-        return currentMinSweetness < minSweetness ? -1 : counter;
+        return priorityQueue.Peek() < minSweetness ? -1 : counter;
     }
 }

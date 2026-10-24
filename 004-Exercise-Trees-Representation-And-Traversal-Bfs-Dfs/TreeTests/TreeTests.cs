@@ -48,7 +48,7 @@ public class TreeTests
                              "    23\r\n" +
                              "    6";
 
-        Assert.AreEqual(expectedOutput, _tree.GetAsString());
+        Assert.AreEqual(expectedOutput.ReplaceLineEndings(), _tree.GetAsString());
     }
 
     [Test]
@@ -118,5 +118,23 @@ public class TreeTests
         Assert.IsTrue(treeAsString.Contains("14"));
         Assert.IsTrue(treeAsString.Contains("23"));
         Assert.IsTrue(treeAsString.Contains("6"));
+    }
+
+    [Test]
+    public void SingleNodeTreeShouldBeItsOwnDeepestNode()
+    {
+        var single = new Tree<int>(5);
+
+        Assert.AreEqual(5, single.GetDeepestLeftomostNode().Key);
+        CollectionAssert.AreEqual(new[] { 5 }, single.GetLongestPath());
+    }
+
+    [Test]
+    public void PathsWithGivenSumShouldOnlyReturnRootToLeafPaths()
+    {
+        var tree = new TreeFactory().CreateTreeFromStrings(new[] { "7 19", "19 1" });
+
+        Assert.IsEmpty(tree.PathsWithGivenSum(26));
+        Assert.AreEqual(1, tree.PathsWithGivenSum(27).Count);
     }
 }

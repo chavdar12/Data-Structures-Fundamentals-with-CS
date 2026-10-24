@@ -16,9 +16,9 @@ public class BinarySearchTree<T> : IAbstractBinarySearchTree<T>
 
     public Node<T> Root { get; private set; }
 
-    public Node<T> LeftChild { get; private set; }
+    public Node<T> LeftChild => Root?.LeftChild;
 
-    public Node<T> RightChild { get; private set; }
+    public Node<T> RightChild => Root?.RightChild;
 
     public T Value => Root.Value;
 
@@ -66,17 +66,9 @@ public class BinarySearchTree<T> : IAbstractBinarySearchTree<T>
             }
 
             if (IsLess(element, previous.Value))
-            {
                 previous.LeftChild = toInsert;
-
-                if (LeftChild == null) LeftChild = toInsert;
-            }
             else
-            {
                 previous.RightChild = toInsert;
-
-                if (RightChild == null) RightChild = toInsert;
-            }
         }
     }
 
